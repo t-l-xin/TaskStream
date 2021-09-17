@@ -41,6 +41,7 @@ public class Main {
     }
 
     public static void printData(ArrayList<Task> tasksData) {
+        System.out.println("printing data by looping");
         for (Task t : tasksData) {
             System.out.println(t);
         }
@@ -53,10 +54,20 @@ public class Main {
     }
 
     public static void printDeadlines(ArrayList<Task> tasksData) {
+        ArrayList<Task> deadlines = new ArrayList<>();
         for (Task t : tasksData) {
             if (t instanceof Deadline) {
                 System.out.println(t);
             }
         }
+    }
+
+
+
+    public static void printDeadlinesUsingStream(ArrayList<Task> tasks){
+        System.out.println("Printing deadlines using Streams");
+        tasks.stream()
+                .filter((t)->t instanceof Deadline) //filtering using lambda
+                .forEach(System.out::println);
     }
 }
